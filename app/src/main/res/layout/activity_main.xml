@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<!--点击事件相关-->
+        <variable
+            name="handlers"
+            type="com.example.testmvvm.Handlers" />
+<!--     数据相关   -->
+        <variable
+            name="user"
+            type="com.example.testmvvm.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+<!--如果需要拼接，需要下面的写法 字符串需要写在value里面 直接写会出问题-->
+        <TextView
+            android:onClick="@{handlers.clickName}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{@string/first+user.name}'
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{user.pass}"
+            android:textColor="#000000" />
+        <EditText
+            android:hint="请输入。。"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:afterTextChanged="@{(editable)->handlers.afterInputChange(editable)}"
+            android:textColor="#000000" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+</layout>

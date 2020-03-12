@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<!--这是item自身的数据源-->
+        <variable
+            name="data"
+            type="com.example.testmvvm.User" />
+        <!--这是子recycleview需要的数据 数据源和item绑定-->
+        <variable
+            name="item_model"
+            type="com.example.testmvvm.use_github.ItemRecycleviewModel" />
+<!--点击事件-->
+        <variable
+            name="item_event"
+            type="com.example.testmvvm.use_github.Github_OnclickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->item_event.onClick(data)}"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{@string/first+ data.name}'
+            android:textColor="#000000"></TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemBinding="@{item_model.onItemBind}"
+            app:items="@{item_model.items}" />
+    </LinearLayout>
+</layout>

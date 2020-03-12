@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<!--这个是和原生的差异，原生是没有recycleview的绑定，下面的对象里面直接存储了数据源和item的bingding-->
+        <variable
+            name="recycle_viewmodel"
+            type="com.example.testmvvm.use_github.GithubModel" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recycleview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:adapter="@{recycle_viewmodel.gitHubRecyclerViewAdapter}"
+        app:itemBinding="@{recycle_viewmodel.onItemBind}"
+        app:items="@{recycle_viewmodel.items}" />
+</layout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestMvvm</string>
+    <string name="second">第二种显示</string>
+    <string name="first">第一种显示</string>
+</resources>
